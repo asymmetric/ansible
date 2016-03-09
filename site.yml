@@ -2,6 +2,7 @@
 - hosts: web
 
   roles:
+    - kermit
 
 - hosts: build
 

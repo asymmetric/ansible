@@ -1,0 +1,12 @@
+---
+
+- name: create deploy-kermit group
+  group:
+    name: deploy-kermit
+  become: yes
+
+- name: create deploy-kermit user
+  user:
+    name: deploy-kermit
+    group: deploy-kermit
+  become: yes
