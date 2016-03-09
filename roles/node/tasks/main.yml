@@ -1,0 +1,4 @@
+---
+
+- name: install node
+  apt: name=node state=present

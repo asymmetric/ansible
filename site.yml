@@ -1,0 +1,9 @@
+---
+- hosts: web
+
+  roles:
+
+- hosts: build
+
+  roles:
+    - node
