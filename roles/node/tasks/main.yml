@@ -1,4 +1,5 @@
 ---
 
-- name: install node
-  apt: name=node state=present
+- name: install nodejs
+  apt: name=node state=present update_cache=yes
+  sudo: yes
