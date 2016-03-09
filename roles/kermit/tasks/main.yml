@@ -1,22 +1,21 @@
 ---
 
-- name: create deploy-kermit group
-  group:
-    name: deploy-kermit
+- name: create deploy group
+  group: name={{deploy_group}}
   become: yes
 
-- name: create deploy-kermit user
+- name: create deploy user
   user:
-    name: deploy-kermit
-    group: deploy-kermit
+    name: "{{deploy_user}}"
+    group: "{{deploy_group}}"
     append: yes
     createhome: no
   become: yes
 
-- name: create me, add me to deploy-kermit group
+- name: create me, add me to deploy group
   user:
     name: asymmetric
-    groups: deploy-kermit
+    groups: "{{deploy_group}}"
     append: yes
   become: yes
 
@@ -24,8 +23,8 @@
   file:
     path: /meltwater/kermit
     state: directory
-    owner: deploy-kermit
-    group: deploy-kermit
+    owner: "{{deploy_user}}"
+    group: "{{deploy_group}}"
     mode: 0774
   become: yes
 
@@ -34,4 +33,11 @@
   with_items:
     - vim
     - sqlite3
+  become: yes
+
+- name: add sudoers rules
+  template:
+    src: sudoers.j2
+    dest: /etc/sudoers.d/kermit
+    validate: "visudo -cf %s"
   become: yes
