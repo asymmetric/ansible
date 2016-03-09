@@ -9,4 +9,29 @@
   user:
     name: deploy-kermit
     group: deploy-kermit
+    append: yes
+    createhome: no
+  become: yes
+
+- name: create me, add me to deploy-kermit group
+  user:
+    name: asymmetric
+    groups: deploy-kermit
+    append: yes
+  become: yes
+
+- name: create deploy directory
+  file:
+    path: /meltwater/kermit
+    state: directory
+    owner: deploy-kermit
+    group: deploy-kermit
+    mode: 0774
+  become: yes
+
+- name: install packages
+  apt: name={{item}}
+  with_items:
+    - vim
+    - sqlite3
   become: yes
