@@ -1,10 +1,6 @@
 README
 ======
 
-On CentOS, the OpenSSH is so old that some important features are not
-supported. Therefore Ansible will use a Python implementation of OpenSSH called
-**Paramiko**, which does not support everything though. [? what does it not support?]
-
 Ansible by default runs over SSH, and uses your `~/.ssh/config`.
 
 For info on the recommended directory layout, see [here](https://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout).
