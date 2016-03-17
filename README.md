@@ -3,7 +3,8 @@ README
 
 Ansible by default runs over SSH, and uses your `~/.ssh/config`.
 
-For info on the recommended directory layout, see [here](https://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout).
+For info on the recommended directory layout, see
+[here](https://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout).
 
 Main concepts
 -------------
